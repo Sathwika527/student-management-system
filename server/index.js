@@ -5,22 +5,27 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-let students = [];
+let tasks = [];
 
 // GET
-app.get("/students", (req, res) => {
-  res.json(students);
+app.get("/", (req, res) => {
+  res.send("Team Task Manager API is running 🚀");
 });
 // POST
-app.post("/students", (req, res) => {
-  students.push({ ...req.body, id: Date.now() });
-  res.json({ message: "Added" });
+app.post("/tasks", (req, res) => {
+  tasks.push({
+    id: Date.now(),
+    title: req.body.title,
+    status: "pending",
+    assignedTo: req.body.assignedTo
+  });
+  res.json({ message: "Task created" });
 });
 
 // DELETE
-app.delete("/students/:id", (req, res) => {
-  students = students.filter(s => s.id != req.params.id);
-  res.json({ message: "Deleted" });
+app.delete("/tasks/:id", (req, res) => {
+  tasks = tasks.filter(t => t.id != req.params.id);
+  res.json({ message: "Task deleted" });
 });
 
 const PORT = process.env.PORT || 5000;
