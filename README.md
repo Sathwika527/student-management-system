@@ -103,19 +103,7 @@ CREATE TABLE tasks (
 | POST   | /tasks     | Create new task |
 | DELETE | /tasks/:id | Delete task     |
 
----
 
-## Screenshots
-
-(Add screenshots here if needed)
-
----
-
-## Demo Video
-
-(Add your demo video link here)
-
----
 
 ## Future Improvements
 
